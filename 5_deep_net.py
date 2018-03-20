@@ -40,8 +40,6 @@ for layer_index in range(num_layers):
     scope = "layer1" if clamped_params else f"layer{layer_index}" 
     scope_reuse = tf.AUTO_REUSE if clamped_params else False
     with tf.variable_scope(scope, reuse=scope_reuse):
-    #with tf.variable_scope(f"layer{layer_index}"):
-    #with tf.variable_scope(f"layer1", reuse=tf.AUTO_REUSE): # with this, will see exact same tensor reused in the graph in each layer.
         layer_out = tf.sigmoid(linear(working_in, nodes_per_layer))
         working_in = layer_out
 
